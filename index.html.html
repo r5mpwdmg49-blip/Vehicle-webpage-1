@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Northdown Motor Works – Surrey garage (fictional demo, design 2)</title>
+<meta name="description" content="Fictional demo website for an independent garage in Surrey.">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..900&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#eaeef3;--card:#fff;--ink:#0b1a2b;--mu:#4d5b6e;--line:#c5cdd8;--yel:#ffd60a;--blue:#1d3f8a;
+--hd:"Archivo","Arial Narrow",Arial,sans-serif;--bd:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 var(--bd);-webkit-text-size-adjust:100%;padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{font-family:var(--hd);margin:0;line-height:1.02;letter-spacing:-.01em}
+h1{font-weight:850;font-stretch:112%;font-size:clamp(2.7rem,12.5vw,6rem)}
+h2{font-weight:800;font-stretch:108%;font-size:clamp(2rem,8vw,3.3rem);margin-bottom:12px}
+h3{font-weight:750;font-size:1.25rem}
+p{margin:0 0 14px;max-width:60ch}
+.mu{color:var(--mu)}
+a{color:inherit}
+.wrap{width:min(1100px,100% - 36px);margin-inline:auto}
+section{padding:64px 0}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.demo{background:var(--ink);color:#fff;font-size:13px;line-height:1.35;text-align:center;padding:7px 14px}
+header{position:sticky;top:0;z-index:20;background:rgba(234,238,243,.94);backdrop-filter:blur(10px);border-bottom:2px solid var(--ink)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;height:62px}
+.logo{font:850 1.35rem/1 var(--hd);font-stretch:112%;text-decoration:none}
+.logo small{display:block;font:500 .72rem/1.2 var(--bd);color:var(--mu);margin-top:3px}
+nav{display:none;gap:26px}
+nav a{text-decoration:none;font-weight:600}
+nav a:hover{text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:3px;text-decoration-color:var(--yel)}
+/* number plate */
+.plate{display:inline-flex;align-items:stretch;text-decoration:none;border:2px solid var(--ink);border-radius:7px;overflow:hidden;background:var(--yel);color:#000;box-shadow:0 3px 0 var(--ink)}
+.plate i{font:700 .62rem/1 var(--bd);font-style:normal;background:var(--blue);color:#fff;display:flex;align-items:flex-end;justify-content:center;padding:0 7px 6px;min-width:26px}
+.plate b{font:850 1.15rem/1 var(--hd);font-stretch:105%;padding:11px 13px;letter-spacing:.02em;white-space:nowrap}
+.plate.big b{font-size:clamp(1.7rem,8.4vw,3rem);padding:14px 20px}
+.plate.big i{min-width:40px;font-size:.85rem}
+.plate:active{transform:translateY(2px);box-shadow:0 1px 0 var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 26px;border-radius:7px;border:2px solid var(--ink);font:700 17px var(--bd);text-decoration:none;cursor:pointer;background:var(--ink);color:#fff}
+.btn.o{background:transparent;color:var(--ink)}
+.btn.o:hover{background:var(--ink);color:#fff}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+/* hero */
+.hero{padding:44px 0 56px}
+.lede{font-size:1.2rem;max-width:34ch;margin:22px 0 28px}
+.hero .row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.hero .btn{flex:1 1 180px}
+.hint{margin-top:34px;font-size:.92rem;color:var(--mu)}
+/* job card */
+.jc{display:grid;gap:22px;margin-top:26px}
+.svc{display:grid;gap:12px}
+.s{all:unset;box-sizing:border-box;display:flex;gap:16px;align-items:flex-start;background:var(--card);border:2px solid var(--line);border-radius:10px;padding:18px;cursor:pointer;transition:border-color .15s,background .15s}
+.s:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.s .ck{flex:none;width:28px;height:28px;border:2px solid var(--ink);border-radius:6px;display:grid;place-items:center;background:#fff;margin-top:2px}
+.s .ck::after{content:"";width:12px;height:7px;border:solid var(--ink);border-width:0 0 3px 3px;transform:rotate(-45deg) translate(1px,-1px);opacity:0}
+.s[aria-pressed=true]{border-color:var(--ink);background:#fffbe0}
+.s[aria-pressed=true] .ck{background:var(--yel)}
+.s[aria-pressed=true] .ck::after{opacity:1}
+.s span.t{display:block}.s p{margin:4px 0 0;color:var(--mu);font-size:.96rem}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:10px;overflow:hidden;box-shadow:6px 6px 0 var(--ink);align-self:start}
+.card header{position:static;background:var(--yel);border:0;border-bottom:2px solid var(--ink);padding:14px 18px;display:flex;justify-content:space-between;font:800 1.1rem var(--hd);backdrop-filter:none}
+.card .in{padding:18px}
+.card ul{list-style:none;margin:0 0 16px;padding:0;min-height:60px}
+.card li{padding:10px 0;border-bottom:1px dashed var(--line);font-weight:600}
+.card .none{color:var(--mu);border:0;font-weight:400}
+label{display:grid;gap:6px;font-weight:600;font-size:.93rem;margin-bottom:14px}
+input{font:400 17px var(--bd);color:var(--ink);background:#fff;border:2px solid var(--line);border-radius:6px;min-height:50px;padding:10px 12px;width:100%}
+input:focus{border-color:var(--ink);outline:none}
+.card .btn{width:100%}
+/* steps */
+.steps{list-style:none;margin:28px 0 0;padding:0;display:grid;gap:0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:6px 16px;padding:20px 0;border-top:2px solid var(--ink)}
+.steps li::before{content:counter(s);font:850 2.4rem/1 var(--hd);color:var(--blue);grid-row:span 2}
+.steps h3{margin:0}.steps p{margin:0;color:var(--mu)}
+/* hours */
+.dark{background:var(--ink);color:#fff}
+.dark .mu{color:#aeb9c9}
+.week{display:grid;gap:8px;margin:22px 0 8px}
+.d{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-radius:8px;border:2px solid #34455c}
+.d.today{background:var(--yel);border-color:var(--yel);color:#000;font-weight:700}
+.badge{display:inline-flex;align-items:center;gap:9px;font-weight:700;margin-bottom:6px}
+.dot{width:12px;height:12px;border-radius:50%;background:#ff5a5a}
+.badge.on .dot{background:#46d17a;box-shadow:0 0 0 4px rgba(70,209,122,.25)}
+.two{display:grid;gap:36px}
+address{font-style:normal;font-size:1.15rem;line-height:1.5;margin:14px 0 22px}
+footer{padding:30px 0 40px;color:var(--mu);font-size:.92rem}
+footer p{max-width:72ch}
+@media(min-width:860px){
+ nav{display:flex}
+ .hero{padding:84px 0 96px}
+ .jc{grid-template-columns:1.15fr .85fr;gap:44px}
+ .card{position:sticky;top:90px}
+ .two{grid-template-columns:1fr 1fr;gap:64px}
+ .steps{grid-template-columns:repeat(4,1fr);gap:24px}
+ .steps li{display:block;border-top:2px solid var(--ink)}
+ .steps li::before{display:block;margin-bottom:12px}
+ section{padding:100px 0}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="demo">Fictional demo business. All names, numbers and addresses are placeholders.</div>
+<header><div class="wrap bar">
+ <a class="logo" href="#top">Northdown<small>Motor Works, Surrey</small></a>
+ <nav aria-label="Main"><a href="#jobcard">Services</a><a href="#how">How it works</a><a href="#hours">Hours</a></nav>
+ <a class="plate" href="tel:+441632960000" aria-label="Call 01632 960000"><i>GB</i><b>01632 960000</b></a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap">
+ <h1>Fixed properly.<br>Explained plainly.</h1>
+ <p class="lede">An independent garage in Surrey for servicing, diagnostics, brakes and suspension. You see a written quote before any work begins.</p>
+ <div class="row"><a class="btn" href="tel:+441632960000">Call the garage</a><a class="btn o" href="#jobcard">Build a job card</a></div>
+ <p class="hint">Fictional placeholder number shown on the plate above.</p>
+</div></section>
+
+<section id="jobcard" style="background:#fff;border-block:2px solid var(--ink)"><div class="wrap">
+ <h2>Tell us what the car needs</h2>
+ <p class="mu">Tap the jobs you are after. Your job card fills in on the right, ready to email to the garage.</p>
+ <div class="jc">
+  <div class="svc" id="svc"></div>
+  <div class="card" aria-live="polite">
+   <header><span>Your job card</span><span id="cnt">0 jobs</span></header>
+   <div class="in">
+    <ul id="lst"><li class="none">Nothing added yet.</li></ul>
+    <label>Your name<input id="nm" autocomplete="name" placeholder="Jo Smith"></label>
+    <label>Registration<input id="rg" autocapitalize="characters" placeholder="AB12 CDE"></label>
+    <a class="btn" id="go" href="#" aria-disabled="true" style="opacity:.4;pointer-events:none">Email this job card</a>
+   </div>
+  </div>
+ </div>
+</div></section>
+
+<section id="how"><div class="wrap">
+ <h2>How a job runs</h2>
+ <p class="mu">Four stages, in this order, every time.</p>
+ <ol class="steps">
+  <li><h3>Drop off or book</h3><p>Call, or bring the car in. Tell us what you have noticed.</p></li>
+  <li><h3>We inspect</h3><p>A technician checks the car and finds the cause.</p></li>
+  <li><h3>You get a quote</h3><p>Written, plain English, agreed before any work starts.</p></li>
+  <li><h3>Work and handover</h3><p>We do the job and show you what was found.</p></li>
+ </ol>
+</div></section>
+
+<section class="dark" id="hours"><div class="wrap two">
+ <div>
+  <h2>Opening hours</h2>
+  <div class="badge" id="badge"><span class="dot"></span><span id="bt">Checking</span></div>
+  <div class="week" id="week"></div>
+  <p class="mu" style="font-size:.9rem">Placeholder hours for the demo.</p>
+ </div>
+ <div>
+  <h2>Find the garage</h2>
+  <address>Unit 4, Example Yard<br>Sample Lane<br>Guildford, Surrey GU0 0AA</address>
+  <p class="mu">Placeholder address. Customer parking on site.</p>
+  <a class="plate big" href="tel:+441632960000" aria-label="Call 01632 960000"><i>GB</i><b>01632 960000</b></a>
+ </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+ <p><b style="color:var(--ink)">Northdown Motor Works</b> is a fictional business made for a website design demonstration. The phone number, email, address and hours are placeholders. No reviews, accreditations or trade memberships are claimed.</p>
+</div></footer>
+
+<script>
+const $=s=>document.querySelector(s);
+const S=[["Vehicle diagnostics","Warning lights, rough running, odd noises. We find the cause before anything is replaced."],["Servicing","Interim, full or manufacturer-schedule servicing, with checks on brakes, tyres and fluids."],["Brakes","Pads, discs, fluid and inspections. A brake test follows every job."],["Suspension","Knocks over bumps, uneven tyre wear, or handling that feels off."]];
+const sel=new Set();
+$("#svc").innerHTML=S.map((s,i)=>`<button class="s" aria-pressed="false" data-i="${i}"><span class="ck"></span><span class="t"><h3>${s[0]}</h3><p>${s[1]}</p></span></button>`).join("");
+function upd(){
+ const L=[...sel].sort().map(i=>S[i][0]);
+ $("#lst").innerHTML=L.length?L.map(t=>`<li>${t}</li>`).join(""):'<li class="none">Nothing added yet.</li>';
+ $("#cnt").textContent=L.length+(L.length==1?" job":" jobs");
+ const g=$("#go"),on=L.length>0;
+ g.style.opacity=on?1:.4;g.style.pointerEvents=on?"auto":"none";g.setAttribute("aria-disabled",!on);
+ const body=`Job card\nName: ${$("#nm").value.trim()||"Not given"}\nReg: ${$("#rg").value.trim()||"Not given"}\nJobs:\n- ${L.join("\n- ")}`;
+ g.href="mailto:quotes@example.com?subject="+encodeURIComponent("Job card request")+"&body="+encodeURIComponent(body);
+}
+$("#svc").onclick=e=>{const b=e.target.closest(".s");if(!b)return;const i=+b.dataset.i,on=!sel.has(i);on?sel.add(i):sel.delete(i);b.setAttribute("aria-pressed",on);upd()};
+$("#nm").oninput=upd;$("#rg").oninput=upd;
+// hours
+const H=[["Monday",8,17.5],["Tuesday",8,17.5],["Wednesday",8,17.5],["Thursday",8,17.5],["Friday",8,17.5],["Saturday",9,13],["Sunday",0,0]];
+const f=h=>(h|0)+":"+String(Math.round(h%1*60)).padStart(2,"0");
+$("#week").innerHTML=H.map(d=>`<div class="d"><span>${d[0]}</span><span>${d[1]?f(d[1])+" to "+f(d[2]):"Closed"}</span></div>`).join("");
+function hrs(){const p=new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/London",weekday:"long",hour:"numeric",minute:"numeric",hour12:false}).formatToParts(new Date()),g=k=>p.find(x=>x.type==k).value;
+ const i=H.findIndex(d=>d[0]==g("weekday")),n=(+g("hour")%24)+ +g("minute")/60,d=H[i],open=d[1]&&n>=d[1]&&n<d[2];
+ document.querySelectorAll(".d").forEach((r,k)=>r.classList.toggle("today",k==i));
+ $("#badge").className="badge"+(open?" on":"");$("#bt").textContent=open?"Open now, closes "+f(d[2]):"Closed now"}
+hrs();setInterval(hrs,60000);
+</script>
+</body>
+</html>
